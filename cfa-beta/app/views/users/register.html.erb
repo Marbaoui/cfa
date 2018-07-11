@@ -1,9 +1,24 @@
 <h1>Register</h1>
 
 <%= form_tag users_register_path, method: :post do %>
+First name: <input type="text" name="first_name"><br>
+Last name: <input type="text" name="last_name"><br>
+Pseudoname:  <input type="text" name="name" ><br>
+password:  <input type="password" name="password" ><br>
+Address: <input type="text" name="address" > <br>
+Postal Code: <input type="number" name="postal_code"> <br>
+City: <input type="text" name="city" > <br>
+GSM: <input type="number" name="gsm" > <br>
+tel: <input type="number" name="tel" ><br>
+Email : <input type="email" name="email" > <br>
+Role: <select name="role">
+    <option value="Doctor">Doctor</option>
+    <option value="Pharmacy_Employer">Pharmacy_Employer</option>
+    <option value="Provider">Provider</option>
+    <option value="none" selected>--Please choose your role--</option>
+      </select>
+Birthday:  <input type="date" name="birthday"> <br>
 
-  <input type="text" name="name"    />
-  <input type="password" name="password" />
   <input type="submit" value="Create" />
 
 

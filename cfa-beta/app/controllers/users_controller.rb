@@ -8,17 +8,17 @@ class UsersController < ApplicationController
   end
 
   def create
-
+    time_now = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
     @user = User.create(name: params[:name], password: params[:password])
-    session[:id_creat_on_proces] = @user.id
-    redirect_to new_staff_path
+    @Staff=  Staff.create(id:  @user.id, first_name: params[:first_name], last_name: params[:last_name], address: params[:address], postal_code: params[:postal_code], city: params[:city], gsm: params[:gsm], tel: params[:tel], email: params[:email], role: params[:role], birthday: params[:birthday], created_at: time_now, updated_at: time_now )
+    redirect_to users_login_path
 
-    end
+  end
 
-    def destroy
-      session[:user_id] = nil
-      redirect_to users_login_path
-    end
+  def logout
+    session[:user_id] = nil
+    redirect_to users_login_path
+  end
 
 
   def login

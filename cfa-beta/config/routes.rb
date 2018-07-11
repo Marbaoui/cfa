@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'users/login'
 
   post 'users/login' => 'users#check'
-  delete 'users/login' => 'users#destroy'
+  delete 'users/login' => 'users#logout'
 
   get 'users/register'
 
