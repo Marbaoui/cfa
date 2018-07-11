@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    before_filter :time_now_set,
+    :only => [:create, :update]
+
   def home
   end
 
@@ -8,10 +11,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    time_now = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
     @user = User.create(name: params[:name], password: params[:password])
     @Staff=  Staff.create(id:  @user.id, first_name: params[:first_name], last_name: params[:last_name], address: params[:address], postal_code: params[:postal_code], city: params[:city], gsm: params[:gsm], tel: params[:tel], email: params[:email], role: params[:role], birthday: params[:birthday], created_at: time_now, updated_at: time_now )
     redirect_to users_login_path
+
+  end
+
+  def update
+    time_now_set
 
   end
 
@@ -36,4 +43,12 @@ class UsersController < ApplicationController
       redirect_to "/users/login"
     end
   end
+
+  private
+
+  def time_now_set
+    time_now = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+  end
+
+
 end
