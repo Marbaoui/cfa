@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :staffs
 
   get 'users/home'
   root 'users#home'

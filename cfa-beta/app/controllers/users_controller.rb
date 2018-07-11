@@ -9,9 +9,10 @@ class UsersController < ApplicationController
 
   def create
 
-    User.create(name: params[:name], password: params[:password])
+    @user = User.create(name: params[:name], password: params[:password])
+    session[:id_creat_on_proces] = @user.id
     redirect_to new_staff_path
-    
+
     end
 
     def destroy
