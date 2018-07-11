@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   resources :staffs
 
   get 'users/home'
+  root 'users#home'
 
   get 'users/login'
 
   post 'users/login' => 'users#check'
+  delete 'users/login' => 'users#destroy'
 
   get 'users/register'
 

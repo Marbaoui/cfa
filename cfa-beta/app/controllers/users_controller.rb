@@ -10,10 +10,14 @@ class UsersController < ApplicationController
   def create
 
     User.create(name: params[:name], password: params[:password])
-
-    redirect_to '/users/home'
+    redirect_to new_staff_path
+    
     end
 
+    def destroy
+      session[:user_id] = nil
+      redirect_to users_login_path
+    end
 
 
   def login
