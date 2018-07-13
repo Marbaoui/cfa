@@ -1,4 +1,4 @@
-class Staffs < ActiveRecord::Migration[5.1]
+class StaffsTable < ActiveRecord::Migration[5.1]
   def change
     create_table :staffs
     add_column :staffs, :first_name, :string
@@ -12,6 +12,7 @@ class Staffs < ActiveRecord::Migration[5.1]
     add_column :staffs, :birthday, :date
     add_column :staffs, :created_at, :datetime
     add_column :staffs, :updated_at, :datetime
+    add_column :staffs, :role, :string
     add_column :staffs, :id_campany, :string
   end
 end
