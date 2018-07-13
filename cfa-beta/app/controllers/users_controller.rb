@@ -16,11 +16,15 @@ class UsersController < ApplicationController
     @staff=  Staff.create(id:  @user.id, first_name: params[:first_name], last_name: params[:last_name], address: params[:address], postal_code: params[:postal_code], city: params[:city], gsm: params[:gsm], tel: params[:tel], email: params[:email], role: params[:role], birthday: params[:birthday], created_at: time_now_set, updated_at: time_now_set  )
     if @user.save and @staff.save
 
-      @role =  Role.find_by role: '#{@staff.role}'
+# DEBUG:
+      @role =  Role.find_by role_name: @staff.role
+      print @role.role_name +"et " @role.number_R
+
       @role.number_R = @role.number_R + 1
       redirect_to users_login_path
-
+# DEBUG:
     end
+  end
 
   def update
     time_now_set
@@ -32,7 +36,10 @@ class UsersController < ApplicationController
     redirect_to users_login_path
   end
 
+  def register
+    @role = Role.all
 
+  end
   def login
     @role = Role.all
   end

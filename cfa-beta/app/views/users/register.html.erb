@@ -12,10 +12,10 @@ GSM: <input type="number" name="gsm"  required> <br>
 tel: <input type="number" name="tel"  required><br>
 Email : <input type="email" name="email"  required> <br>
 Role: <select name="role" required>
-    <option value="Doctor">Doctor</option>
-    <option value="Pharmacy_Employer">Pharmacy_Employer</option>
-    <option value="Provider">Provider</option>
-    <option value="none" selected>--Please choose your role--</option>
+<% @role.each do |r| %>
+   <option value="role"><%="#{r.role_name}"%></option> 
+<% end %>
+  <option value="none" selected>--Please choose your role--</option>
   </select> <br>
 Birthday:  <input type="date" name="birthday" required> <br>
 <input type="submit" value="create" />
