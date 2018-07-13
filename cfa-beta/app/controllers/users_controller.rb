@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
 # DEBUG:
       @role =  Role.find_by role_name: @staff.role
-      print @role.role_name +"et " @role.number_R
+      print @role.role_name +"et " + @role.number_R
 
       @role.number_R = @role.number_R + 1
       redirect_to users_login_path

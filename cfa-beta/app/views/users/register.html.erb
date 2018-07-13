@@ -11,12 +11,9 @@ City: <input type="text" name="city"  required> <br>
 GSM: <input type="number" name="gsm"  required> <br>
 tel: <input type="number" name="tel"  required><br>
 Email : <input type="email" name="email"  required> <br>
-Role: <select name="role" required>
-<% @role.each do |r| %>
-   <option value="role"><%="#{r.role_name}"%></option> 
-<% end %>
-  <option value="none" selected>--Please choose your role--</option>
-  </select> <br>
+Role: <%= select("role", "ids",  Role.all.collect {|r| [ r.role_name]}, {prompt: 'Select your role'})
+%> <br>
+
 Birthday:  <input type="date" name="birthday" required> <br>
 <input type="submit" value="create" />
 <% end %>
