@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     :only => [:create, :update]
 
   def home
+
   end
 
 
@@ -12,10 +13,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(name: params[:name], password: params[:password])
-    @Staff=  Staff.create(id:  @user.id, first_name: params[:first_name], last_name: params[:last_name], address: params[:address], postal_code: params[:postal_code], city: params[:city], gsm: params[:gsm], tel: params[:tel], email: params[:email], role: params[:role], birthday: params[:birthday], created_at: time_now_set, updated_at: time_now_set  )
-    redirect_to users_login_path
+    @staff=  Staff.create(id:  @user.id, first_name: params[:first_name], last_name: params[:last_name], address: params[:address], postal_code: params[:postal_code], city: params[:city], gsm: params[:gsm], tel: params[:tel], email: params[:email], role: params[:role], birthday: params[:birthday], created_at: time_now_set, updated_at: time_now_set  )
+    if @user.save and @staff.save
 
-  end
+      @role =  Role.find_by role: '#{@staff.role}'
+      @role.number_R = @role.number_R + 1
+      redirect_to users_login_path
+
+    end
 
   def update
     time_now_set
@@ -29,6 +34,7 @@ class UsersController < ApplicationController
 
 
   def login
+    @role = Role.all
   end
 
   def check
