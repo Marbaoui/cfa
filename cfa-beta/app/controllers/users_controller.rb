@@ -17,11 +17,13 @@ class UsersController < ApplicationController
     if @user.save and @staff.save
 
 # DEBUG:
-      @role =  Role.find_by role_name: @staff.role
-      print @role.role_name +"et " + @role.number_R
-
+      @role =  Role.find_by role_name: params[:role][:ids]
       @role.number_R = @role.number_R + 1
-      redirect_to users_login_path
+
+      if @role.save
+        redirect_to users_login_path
+      end
+
 # DEBUG:
     end
   end
