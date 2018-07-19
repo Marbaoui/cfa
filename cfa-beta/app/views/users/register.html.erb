@@ -7,7 +7,8 @@ Pharmacy Name:  <input type="text" name="name"  required><br>
 password:  <input type="password" name="password"  required><br>
 Address: <input type="text" name="address"  required> <br>
 Postal Code: <input type="number" name="postal_code" required> <br>
-City: <input type="text" name="city"  required> <br>
+City: <%= select("city", "ids",  City.all.collect {|r| [ r.city_name]}, {prompt: 'Choose your City'})
+%> <br>
 GSM: <input type="number" name="gsm"  required> <br>
 tel: <input type="number" name="tel"  required><br>
 Email : <input type="email" name="email"  required> <br>
