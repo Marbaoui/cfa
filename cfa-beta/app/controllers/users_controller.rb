@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(name: params[:name], password: params[:password])
-    @staff=  Staff.create(id:  @user.id, first_name: params[:first_name], last_name: params[:last_name], address: params[:address], postal_code: params[:postal_code], city: params[:city_name][:ids], address_p: params[:address_p], postal_code_p: params[:postal_code_p], city_p: params[:city_name_p][:ids], gsm: params[:gsm], tel: params[:tel], email: params[:email], role: params[:role][:ids], birthday: params[:birthday], created_at: time_now_set, updated_at: time_now_set  )
+    @staff=  Staff.create(id:  @user.id, first_name: params[:first_name], last_name: params[:last_name], address: params[:address], postal_code: params[:postal_code], city: params[:city][:ids], address_p: params[:address_p], postal_code_p: params[:postal_code_p], city_p: params[:city_p][:ids], gsm: params[:gsm], tel: params[:tel], email: params[:email], role: params[:role][:ids], birthday: params[:birthday], created_at: time_now_set, updated_at: time_now_set  )
     if @user.save and @staff.save
 
 # DEBUG:
