@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   post 'users/login' => 'users#check'
   delete 'users/login' => 'users#logout'
-
+  get 'users/:user_name/edit' => 'users#edit' as: 'users/edit/sitting'
   get 'users/register'
 
   post 'users/register' => 'users#create'
