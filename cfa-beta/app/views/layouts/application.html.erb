@@ -5,14 +5,20 @@
     <% if @current_user %>
     <ul>
       <li>
+        <%= link_to "Stock", stocks_pharmacy_path, method: :get %>
       </li>
+      <ul>
+
+
+
       <li>
-        <%= link_to "edit", users_edit_path(@user_name), method: :get %>
+        <%= link_to "edit", users_edit_path(@current_user.name), method: :get %>
       </li>
       <li>
         <%= link_to "Log out", users_login_path, method: :delete, data: { confirm: 'Are you sure?' } %>
       </li>
-
+      </ul>
+      </li>
 
     </ul>
     <% end %>
