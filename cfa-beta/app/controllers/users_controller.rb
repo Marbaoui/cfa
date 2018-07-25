@@ -3,8 +3,11 @@ class UsersController < ApplicationController
   :only => [:create, :update]
 
   def home
-    @user =  User.find_by id: session[:user_id]
-    @user_name = @user.name
+
+    if @current_user
+      @user =  User.find_by id: session[:user_id]
+      @user_name = @user.name
+    end
 
   end
 
@@ -36,7 +39,21 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user= User.find(session[:user_id])
+    @staff= Staff.find(session[:user_id])
     time_now_set
+
+    if  @user.password == params[:password]
+
+      @user.update(name: params[:name], password: params[:password])
+      @staff.update(id:  @user.id, first_name: params[:first_name], last_name: params[:last_name], address: params[:address], postal_code: params[:postal_code], city: params[:city][:ids], address_p: params[:address_p], postal_code_p: params[:postal_code_p], city_p: params[:city_p][:ids], gsm: params[:gsm], tel: params[:tel], email: params[:email], role: params[:role][:ids], birthday: params[:birthday], updated_at: time_now_set  )
+      flash[:info] = "All  change saved"
+      redirect_to users_home_path
+    else
+      flash[:info] = "wrong password"
+      @user_name = @user.name
+      redirect_to users_edit_path(@user_name)
+    end
 
   end
 
@@ -58,7 +75,7 @@ class UsersController < ApplicationController
     if @current_user
       session[:user_id] = @current_user.id
       flash[:info] = "Vous êtes maintenant connecté"
-      redirect_to "/users/home"
+      redirect_to users_home_path
     else
       session[:user_id] = nil
       flash[:info] = "Échec de la connexion"

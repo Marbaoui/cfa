@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post 'users/register' => 'users#create'
 
   get 'users/edit/:user_name' => 'users#edit',  :as => 'users/edit'
-  put 'users/edit' => 'users#update'
+  put 'users/edit/:user_name' => 'users#update'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

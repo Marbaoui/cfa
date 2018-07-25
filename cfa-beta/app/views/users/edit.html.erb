@@ -1,27 +1,102 @@
 <h1>Edit </h1>
 
-<%= form_tag users_register_path, method: :put do %>
-First name: <input type="text" name="first_name" ><br>
-Last name: <input type="text" name="last_name" ><br>
-password:  <input type="password" name="password"  ><br>
-Address: <input type="text" name="address"  > <br>
-Postal Code: <input type="number" name="postal_code" > <br>
-City: <%= select("city", "ids",  City.all.collect {|r| [ r.city_name]}, {prompt: 'Choose your City'})
-%> <br>
-GSM: <input type="number" name="gsm"  > <br>
-Email : <input type="email" name="email"  > <br>
-Role: <%= select("role", "ids",  Role.all.collect {|r| [ r.role_name]}, {prompt: 'Select your role'})
+<%= form_tag users_edit_path, method: "put" do %>
+<label >
+  First name:
+</label><br>
+<%= text_field_tag :first_name, @staff.first_name %>
+
+
+<label >
+  Last name:
+</label><br>
+<%= text_field_tag :last_name, @staff.last_name  %>
+
+<label >
+  Adress:
+</label><br>
+<%= text_field_tag :address, @staff.address  %>
+
+
+<label >
+  Posal Code:
+</label><br>
+<%= number_field_tag :postal_code, @staff.postal_code  %>
+
+
+<label >
+City:
+</label>
+
+ <%= select("city", "ids",  City.all.collect {|r| [ r.city_name]}, {prompt: @staff.city })
 %> <br>
 
-Birthday:  <input type="date" name="birthday" > <br>
+<label >
+  GSM:
+</label><br>
+<%= phone_field_tag :gsm, @staff.gsm  %>
+
+<label >
+  Email:
+</label><br>
+<%= email_field_tag :email, @staff.email  %>
+
+<label >
+  Role:
+</label><br>
+<%= select("role", "ids",  Role.all.collect {|r| [ r.role_name]}, {prompt: @staff.role})%> <br>
+
+<label >
+  Birthday:
+</label><br>
+<%= date_field_tag :birthday, @staff.birthday  %>
+
+
+
+
+
+
+
 
 <h1> Pharmacy info : </h1> <br>
-Pharmacy Name:  <input type="text" name="name"  ><br>
-tel: <input type="number" name="tel"  ><br>
-Address: <input type="text" name="address_p"  > <br>
-Postal Code: <input type="number" name="postal_code_p" > <br>
-City: <%= select("city_p", "ids",  City.all.collect {|r| [ r.city_name]}, {prompt: 'Choose your City'})
-%> <br><br>
+<label >
+  Pharmacy Name:
+</label><br>
+<%= text_field_tag :name, @user.name  %>
 
-<input type="submit" value="create" />
+<label >
+  Adress:
+</label><br>
+<%= text_field_tag :address_p, @staff.address_p  %>
+
+
+<label >
+  Posal Code:
+</label><br>
+<%= number_field_tag :postal_code_p, @staff.postal_code_p  %>
+
+
+<label >
+City:
+</label>
+
+ <%= select("city_p", "ids",  City.all.collect {|r| [ r.city_name]}, {prompt: @staff.city_p })
+%> <br>
+
+<label >
+  Tel:
+</label><br>
+<%= number_field_tag :tel, @staff.tel  %>
+<br>
+
+
+
+<label >
+  password:
+</label><br>
+<%= password_field_tag :password, nil ,  :required => true%>
+<br>
+
+
+<%= submit_tag "Save change" %>
 <% end %>
