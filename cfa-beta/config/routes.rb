@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'stocks/pharmacy'
+
+  get 'stocks/add_products'
+
+  get 'stocks/update_product'
+
+  get 'stocks/delet_product'
+
+  get 'stocks/show_products'
+
   get 'users/home'
   root 'users#home'
 
