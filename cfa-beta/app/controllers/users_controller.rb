@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   :only => [:create, :update]
 
   def home
+    @user =  User.find_by id: session[:user_id]
+    @user_name = @user.name
+
   end
 
 
@@ -25,6 +28,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user= User.find(session[:user_id])
+    @staff= Staff.find(session[:user_id])
+
+
+    @user_name = @user.name
   end
 
   def update
