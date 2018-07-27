@@ -1,2 +1,2 @@
-class DCI < ActiveRecord::Base
+class Dci < ActiveRecord::Base
 end

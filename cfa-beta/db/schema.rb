@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180727140823) do
-
-  create_table "DCI", force: :cascade do |t|
-    t.string "dci_p"
-    t.string "dci_full_name"
-  end
+ActiveRecord::Schema.define(version: 20180727144622) do
 
   create_table "cities", force: :cascade do |t|
     t.string "city_name"
+  end
+
+  create_table "dcis", force: :cascade do |t|
+    t.string "dci_p"
+    t.string "dci_full_name"
   end
 
   create_table "expired_products", force: :cascade do |t|
