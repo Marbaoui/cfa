@@ -3,6 +3,7 @@ class StocksController < ApplicationController
   end
 
   def add_products
+  @product = Product.new
   end
 
   def update_product

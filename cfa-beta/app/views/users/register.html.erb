@@ -21,7 +21,8 @@ tel: <input type="number" name="tel"  required><br>
 Address: <input type="text" name="address_p"  required> <br>
 Postal Code: <input type="number" name="postal_code_p" required> <br>
 City: <%= select("city_p", "ids",  City.all.collect {|r| [ r.city_name]}, {prompt: 'Choose your City'})
-%> <br><br>
+%> <br>
 
+<br>
 <input type="submit" value="create" />
 <% end %>

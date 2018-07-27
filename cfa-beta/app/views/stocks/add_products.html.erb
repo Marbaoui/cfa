@@ -2,91 +2,36 @@
 
 <h1> </h1>
 
-<%= form_tag stocks_add_products_path, method: "put" do %>
+<%= form_tag stocks_add_products_path, method: "get" do %>
 <label >
   Product name:
-</label><br>
-<%= text_field_tag :product_name, @stock.product_name %>
-
-
-
-
-
-
+</label>
+<%= text_field_tag :name_p, @product.name_p %> <br>
 
 <label >
-City:
+  Barcode:
 </label>
+<%= number_field_tag :barcode_p, @product.barcode_p %> <br>
 
- <%= select("city", "ids",  City.all.collect {|r| [ r.city_name]}, {prompt: @staff.city })
+<label >
+  Barcode:
+</label>
+<%= number_field_tag :barcode_p, @product.barcode_p %> <br>
+
+<label >
+  Forme:
+</label>
+<%= select("forme_p", "ids",  Forme.all.collect {|r| [ r.forme_p]}, {prompt: 'Select the forme'})
 %> <br>
 
 <label >
-  GSM:
-</label><br>
-<%= phone_field_tag :gsm, @staff.gsm  %>
-
-<label >
-  Email:
-</label><br>
-<%= email_field_tag :email, @staff.email  %>
-
-<label >
-  Role:
-</label><br>
-<%= select("role", "ids",  Role.all.collect {|r| [ r.role_name]}, {prompt: @staff.role})%> <br>
-
-<label >
-  Birthday:
-</label><br>
-<%= date_field_tag :birthday, @staff.birthday  %>
-
-
-
-
-
-
-
-
-<h1> Pharmacy info : </h1> <br>
-<label >
-  Pharmacy Name:
-</label><br>
-<%= text_field_tag :name, @user.name  %>
-
-<label >
-  Adress:
-</label><br>
-<%= text_field_tag :address_p, @staff.address_p  %>
-
-
-<label >
-  Posal Code:
-</label><br>
-<%= number_field_tag :postal_code_p, @staff.postal_code_p  %>
-
-
-<label >
-City:
+  DCI:
 </label>
-
- <%= select("city_p", "ids",  City.all.collect {|r| [ r.city_name]}, {prompt: @staff.city_p })
+<%= select("dci_p", "ids",  Dci.all.collect {|r| [ r.dci_p]}, {prompt: 'Select the DCI'})
 %> <br>
 
-<label >
-  Tel:
-</label><br>
-<%= number_field_tag :tel, @staff.tel  %>
+
+
 <br>
-
-
-
-<label >
-  password:
-</label><br>
-<%= password_field_tag :password, nil ,  :required => true%>
-<br>
-
-
 <%= submit_tag "Save change" %>
 <% end %>
